@@ -13,14 +13,15 @@ if __name__ == "__main__":
                                                  'You are given a git diff and will point out definite security issues. Answer with "ok" if there is no issue.'},
                    {'role': 'user', 'content': inp}]
     tokenizer = tiktoken.encoding_for_model('gpt-4')
-    if len(tokenizer.encode(inp)) > 500:
+    n_tokens = tokenizer.encode(inp)
+    if len(n_tokens) > 500:
         print('The diff is to long to process.')
         exit(1)
     print('Provided diff:\n' + inp + '\n')
     response = openai.ChatCompletion.create(
         model="gpt-4",
         messages=message_log,
-        max_tokens=1000,
+        max_tokens=n_tokens + 1000,
         stop=None,
         temperature=0,
     )
