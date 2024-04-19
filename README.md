@@ -22,6 +22,8 @@ Make sure to provide an OpenAI API key in the environment variable OPEN_AI_KEY
 git --no-pager diff HEAD~1 HEAD > diff.txt
 python __main__.py diff.txt
 ```
+The TypeScript version works the same way.
+Adjust maximum tokens to your needs in both versions.
 
 ## Contributing
 Contributions are welcome! Please read the contributing guide to get started.
